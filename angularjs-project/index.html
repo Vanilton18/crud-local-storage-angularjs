@@ -1,0 +1,72 @@
+<!-- ! + TAB-->
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="exemplo1">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <title>CRUD  - Angular JS</title>
+</head>
+
+<body class="container" ng-controller="Controller as ctrl">
+
+    <div class="row">
+        <form>
+        <div class="form-group">
+
+            <div class="col-md-6">
+                <label>Nome: </label>
+                <input class="form-control" ng-model="user.name" type="text" placeholder="Type name"></input>
+            </div>
+            <div class="col-md-6">
+                        
+                <label>Email: </label>
+                <input class="form-control" ng-model="user.email" type="text" placeholder="Type email"></input>
+            </div>
+
+            <div class="col-md-12">
+                    <div class="form-group" style="padding-top: 5px;">
+                        <button class="btn btn-primary" ng-click="ctrl.saveUser()">Save</button>
+                        <button class="btn btn-primary" ng-click="ctrl.deleteUser()">Delete All</button>
+                    </div>
+                </div>
+                   
+            
+        </div>
+    </form>
+    </div>
+
+    <hr>
+    <div>
+        <table class="table table-striped" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="user in ctrl.listUser">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button id="{{user.id}}" ng-click="ctrl.edit(user.id)">Editar</button>
+                </td>
+                <td>
+                    <button id="{{user.id}}" ng-click="ctrl.remove(user.id)">Remover</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="node_modules/angular/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/ngStorage/ngStorage.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
